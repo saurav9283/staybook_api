@@ -103,7 +103,6 @@ export const editHotel = async (req, res, next) => {
       hotelLandmark,
       hotelCitySlug,
     } = req.body;
-    console.log(req.body)
 
     let hotel = await Hotel.findById(id);
 

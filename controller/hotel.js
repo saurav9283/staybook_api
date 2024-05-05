@@ -1,4 +1,4 @@
-import Hotel from "../Model/HotelModel.js";
+import {HotelInfoDetails} from "../Model/HotelModel.js";
 
 export const createHotel = async (req, res, next) => {
   try {
@@ -14,10 +14,10 @@ export const createHotel = async (req, res, next) => {
       hotelLandmark,
       hotelCitySlug,
     } = req.body;
-    // console.log(req.body)
+    console.log(req.body)
 
     // Create new Hotel document
-    const newHotel = new Hotel({
+    const newHotel = new HotelInfoDetails({
       hotelImage,
       hotelName,
       hotelAriName,
@@ -54,7 +54,7 @@ export const updatedHotel = async (req, res, next) => {
       hotelCitySlug,
     } = req.body;
 
-    let hotel = await Hotel.findById(id);
+    let hotel = await HotelInfoDetails.findById(id);
 
     if (!hotel) {
       return res.status(404).json({ error: "Hotel not found" });
@@ -81,7 +81,7 @@ export const updatedHotel = async (req, res, next) => {
 
 export const getHotels = async (req, res, next) => {
   try {
-    const hotels = await Hotel.find();
+    const hotels = await HotelInfoDetails.find();
 
     res.status(200).json({ hotels });
   } catch (error) {
@@ -104,7 +104,7 @@ export const editHotel = async (req, res, next) => {
       hotelCitySlug,
     } = req.body;
 
-    let hotel = await Hotel.findById(id);
+    let hotel = await HotelInfoDetails.findById(id);
 
     if(!hotel)
     {
